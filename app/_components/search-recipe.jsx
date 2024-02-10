@@ -6,69 +6,76 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const SearchRecipes = () => {
-  const [text, setText] = useState("");
-  const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+    const [text, setText] = useState("");
+    const [response, setResponse] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
 
-    try {
-      const response = await axios.get(
-        "https://tasty.p.rapidapi.com/recipes/list",
-        {
-          params: { q: text },
-          headers: {
-            "x-rapidapi-key": process.env.NEXT_PUBLIC_PROJECT_API_KEY,
-            "x-rapidapi-host": "tasty.p.rapidapi.com",
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
+        try {
+            const response = await axios.get(
+                "https://tasty.p.rapidapi.com/recipes/list",
+                {
+                    params: { q: text },
+                    headers: {
+                        "x-rapidapi-key": process.env.NEXT_PUBLIC_PROJECT_API_KEY,
+                        "x-rapidapi-host": "tasty.p.rapidapi.com",
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    },
+                }
+            );
+            setResponse(response.data.results);
+        } catch (error) {
+            setError("Error fetching data. Please try again.");
+            console.error("Error:", error);
+        } finally {
+            setLoading(false);
         }
-      );
-      setResponse(response.data.results);
-    } catch (error) {
-      setError("Error fetching data. Please try again.");
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  const handleChange = (e) => {
-    setText(e.target.value);
-  };
+    const handleChange = (e) => {
+        setText(e.target.value);
+    };
 
-  return (
-    <div className="flex flex-col w-full items-center justify-center">
-      <form onSubmit={handleSubmit} className="w-96">
-        <Textarea
-          value={text}
-          onChange={handleChange}
-          placeholder="Enter your Ingredients here"
-          rows={5}
-          cols={50}
-        />
-        <Button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Submit"}
-        </Button>
-      </form>
-      {error && <div>{error}</div>}
-      {response && (
-        <div>
-          <h2>Recipe Results:</h2>
-          <ul>
-            {response.map((recipe, index) => (
-              <li key={index}><li key={recipe.name}>{recipe.name}: {recipe.description} <li key={recipe.instructions.index}>{recipe.instructions.display_text}</li></li></li>
-            ))}
-          </ul>
+    return (
+        <div className="flex flex-col w-full items-center justify-center py-6">
+            <form onSubmit={handleSubmit} className="w-96">
+                <Textarea
+                    value={text}
+                    onChange={handleChange}
+                    placeholder="Enter your Ingredients here"
+                    rows={5}
+                    cols={50}
+                />
+                <Button type="submit" disabled={loading} className="p-6">
+                    {loading ? "Loading..." : "Submit"}
+                </Button>
+            </form>
+            {error && <div>{error}</div>}
+            {response && (
+                <div>
+                    <h2>Recipe Results:</h2>
+                    <ul>
+                        {response.map((recipe, recipeIndex) => (
+                            <div key={recipeIndex}>
+                                <h2>{recipe.name}:</h2> <h3>{recipe.description}</h3>
+                                <ol>
+                                    {recipe.instructions.map((instruction, instructionIndex) =>
+                                    <li key={instructionIndex}>{instruction.display_text}</li>
+                                    )};
+                                </ol>
+                            </div>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default SearchRecipes;
