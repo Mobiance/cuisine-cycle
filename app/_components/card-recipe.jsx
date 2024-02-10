@@ -14,7 +14,7 @@ export const CardRecipe = ({ recipe, recipeIndex }) => {
                     <CardTitle>{recipe.name}</CardTitle>
                 </CardHeader>
                 <CardDescription className="px-5 py-3 text-md font-semibold">
-                    Description:
+                    Description:  
                     {recipe.description}
                 </CardDescription>
                 <CardContent>

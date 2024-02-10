@@ -54,7 +54,8 @@ const SearchRecipes = () => {
                     onChange={handleChange}
                     placeholder="Enter your Ingredients here"
                     rows={5}
-                    cols={50}
+                    cols={400}
+                    className="p-4"
                 />
                 <Button type="submit" disabled={loading} className="p-6">
                     {loading ? "Loading..." : "Submit"}
