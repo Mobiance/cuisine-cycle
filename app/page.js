@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <main className="overflow-hidden">
             <Navbar />
-            <div className="h-full flex items-center justify-center">
+            <div className="h-[100%] flex items-center justify-center">
                 <MainBody />
             </div>
         </main>
