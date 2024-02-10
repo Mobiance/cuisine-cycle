@@ -28,32 +28,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="shadow-md p-4 overflow-hidden bg-[#FFF3CF]">
-      <div className="container mx-auto flex  w-9/12 justify-between ">
-        <div className="object-cover">
+    <nav className="shadow-md p-4 overflow-hidden bg-[#fad09d]">
+      <div className="container mx-auto flex w-full">
           <img
             src="/logo.png"
             alt="Logo"
-            className="w-16 mr-4 cursor-pointer object-cover"
+            className="w-16 mr-4 cursor-pointer object-fill" 
             onClick={() => handleNavigation("/")}
           />
-        </div>
-
-        <div className="hidden lg:flex w-full  text-gray-500  md:w-auto object-cover">
+        <div className="hidden lg:flex w-full flex-row-reverse justify-end right-0 md:w-auto object-cover">
           <div
-            className="text-gray-500 hover:text-black px-4 cursor-pointer"
+            className="hover:font-semibold px-4 cursor-pointer"
             onClick={() => handleNavigation("/login")}
           >
             Login/SignUp
           </div>
           <div
-            className="text-gray-500 hover:text-black px-4 cursor-pointer"
+            className="hover:font-semibold px-4 cursor-pointer"
             onClick={() => handleNavigation("/login")}
           >
             My Account
           </div>
         </div>
-        <div>
+        <div className="flex items-center justify-center flex-row-reverse">
           <button
             onClick={toggleMenu}
             className={`lg:hidden flex items-center px-3 py-2 ml-5 border rounded text-gray-500 border-gray-500 hover:text-black hover:border-black focus:outline-none ${

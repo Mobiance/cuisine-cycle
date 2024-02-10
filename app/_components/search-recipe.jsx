@@ -54,7 +54,7 @@ const SearchRecipes = () => {
                     placeholder="Enter your Ingredients here"
                     rows={5}
                     cols={400}
-                    className="p-4"
+                    className="p-4 bg-[#fad09d] shadow-md border-none"
                 />
                 <Button type="submit" disabled={loading} className="p-6">
                     {loading ? "" : "Submit"}

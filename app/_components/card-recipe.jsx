@@ -8,8 +8,8 @@ import {
 
 export const CardRecipe = ({ recipe, recipeIndex }) => {
     return (
-        <div>
-            <Card>
+        <div className="py-3">
+            <Card className="bg-[#fad09d]">
                 <CardHeader>
                     <CardTitle>{recipe.name}</CardTitle>
                 </CardHeader>
