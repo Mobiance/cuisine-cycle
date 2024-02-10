@@ -1,6 +1,6 @@
-# Food Waste Reduction Recipe App
+# Cuisine Cycle
 
-This project was developed during [Hackathon Name], a hackathon aimed at addressing food sustainability challenges. Our project focuses on reducing food waste by providing users with recipes based on the ingredients they have available.
+This project was developed during HackThisFall, a hackathon aimed at Innovating for good Our project focuses on reducing food waste by providing users with recipes based on the ingredients they have available.
 
 ## Problem Statement
 
@@ -58,9 +58,9 @@ npm run dev
 
 ## Team
 
+- **[Shubham Sharma]( https://github.com/Mobiance )**
 - **[Kaustubh Vaidya]( https://github.com/KaustubhVaidya404 )**
 - **[Needa Ansari]( https://github.com/needa01 )**
-- **[Shubham Sharma]( https://github.com/Mobiance )**
 - **[Mehil Bhavsar]( https://github.com/Hemil-bhavsar )**
 
 ## Acknowledgements
