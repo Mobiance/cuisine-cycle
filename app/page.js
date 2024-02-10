@@ -1,22 +1,14 @@
-<<<<<<< HEAD
 "use client"
-import Image from "next/image";
-import  Navbar  from "./_components/Navbar";
-
-export default function Home() {
-  return (
-    <main className="overflow-hidden">
-      <Navbar />
-    </main>
-  );
-=======
-import { MainBody } from "./_component/main-body";
+import Navbar from "./_components/Navbar";
+import { MainBody } from "./_components/main-body";
 
 export default function Home() {
     return (
-        <div className="h-full w-full">
-            <MainBody />
-        </div>
+        <main className="overflow-hidden">
+            <Navbar />
+            <div className="h-full flex items-center justify-center">
+                <MainBody />
+            </div>
+        </main>
     );
->>>>>>> 3f19372580be691de1dadd6c0f3e8fe9a70155d7
 }
