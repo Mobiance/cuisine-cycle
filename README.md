@@ -4,7 +4,7 @@ This project was developed during [Hackathon Name], a hackathon aimed at address
 
 ## Problem Statement
 
-Food waste is a significant issue contributing to environmental degradation and global hunger. According to [source], [statistics]. Our goal is to tackle this problem by empowering users to make the most of their ingredients and reduce food waste at home.
+Food waste is a significant issue contributing to environmental degradation and global hunger. Our goal is to tackle this problem by empowering users to make the most of their ingredients and reduce food waste at home.
 
 ## Solution Overview
 
