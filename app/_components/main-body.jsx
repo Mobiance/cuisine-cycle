@@ -1,9 +1,9 @@
 // import { AddIngredient } from "./add-ingredient"
 // import { SearchButton } from "./search-button"
-import { RecipeForm } from "./recipe-form"
+import SearchRecipes from "./search-recipe"
 
 export const MainBody = () => {
     return (
-            <RecipeForm />
+            <SearchRecipes />
     )
 }

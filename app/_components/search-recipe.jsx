@@ -1,27 +1,38 @@
-import React, { useState } from "react";
-import axios from "axios"; // Assuming you're using Axios for HTTP requests
+// components/SearchRecipes.js
 
-export const RecipeForm = () => {
+import React, { useState } from "react";
+import axios from "axios";
+
+const SearchRecipes = () => {
   const [text, setText] = useState("");
   const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setLoading(true);
+    setError(null);
+
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         "https://tasty.p.rapidapi.com/recipes/list",
-        { q: text },
         {
+          params: { q: text },
           headers: {
-            "x-rapidapi-key": "c98f9e4f38msh5c310f071f56d15p135298jsn058b87e87576",
+            "x-rapidapi-key": process.env.PROJECT_API_KEY,
             "x-rapidapi-host": "tasty.p.rapidapi.com",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
           },
         }
       );
-      setResponse(response.data);
+      setResponse(response.data.results);
     } catch (error) {
+      setError("Error fetching data. Please try again.");
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,14 +50,17 @@ export const RecipeForm = () => {
           rows={5}
           cols={50}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Loading..." : "Submit"}
+        </button>
       </form>
+      {error && <div>{error}</div>}
       {response && (
         <div>
           <h2>Recipe Results:</h2>
           <ul>
             {response.map((recipe, index) => (
-              <li key={index}>{recipe.name}</li>
+              <li key={index}><li key={recipe.name}>{recipe.name}: {recipe.description} <li key={recipe.instructions.index}>{recipe.instructions.display_text}</li></li></li>
             ))}
           </ul>
         </div>
@@ -54,3 +68,5 @@ export const RecipeForm = () => {
     </div>
   );
 };
+
+export default SearchRecipes;
