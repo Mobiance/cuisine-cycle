@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import RecipeCard from "./RecipeCard";
 import { CustomSpinner } from "./Spinner";
+import { CardRecipe } from "./card-recipe";
 
 const SearchRecipes = () => {
     const [text, setText] = useState("");
@@ -62,11 +63,11 @@ const SearchRecipes = () => {
             {error && <div>{error}</div>}
             {loading && (<CustomSpinner/>)}
             {response  && (
-                <div className=" w-9/12">
-                    <h2>Recipe Results:</h2>
+                <div className="w-9/12">
+                    <p className="text-lg font-bold p-6">Recipe Results:</p>
                     <ul>
                         {response.map((recipe, recipeIndex) => (
-                            <RecipeCard recipe={recipe} recipeIndex={recipeIndex}/>
+                            <CardRecipe recipe={recipe} recipeIndex={recipeIndex}/>
                         ))}
                     </ul>
                 </div>
