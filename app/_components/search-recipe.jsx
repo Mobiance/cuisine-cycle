@@ -4,9 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import axios from "axios";
-import RecipeCard from "./RecipeCard";
-import { CustomSpinner } from "./Spinner";
 import { CardRecipe } from "./card-recipe";
+import { Spinner } from "@/components/spinner";
 
 const SearchRecipes = () => {
     const [text, setText] = useState("");
@@ -58,11 +57,11 @@ const SearchRecipes = () => {
                     className="p-4"
                 />
                 <Button type="submit" disabled={loading} className="p-6">
-                    {loading ? "Loading..." : "Submit"}
+                    {loading ? "" : "Submit"}
                 </Button>
             </form>
             {error && <div>{error}</div>}
-            {loading && (<CustomSpinner/>)}
+            {loading && (<Spinner/>)}
             {response  && (
                 <div className="w-9/12">
                     <p className="text-lg font-bold p-6">Recipe Results:</p>
