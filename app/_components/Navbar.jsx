@@ -39,7 +39,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div className=" flex w-full  text-gray-500  md:w-auto  lg:flex object-cover">
+        <div className="hidden lg:flex w-full  text-gray-500  md:w-auto object-cover">
           <div
             className="text-gray-500 hover:text-black px-4 cursor-pointer"
             onClick={() => handleNavigation("/login")}
@@ -56,7 +56,7 @@ const Navbar = () => {
         <div>
           <button
             onClick={toggleMenu}
-            className={`lg:hidden flex items-center px-3 py-2 -ml-5 border rounded text-gray-500 border-gray-500 hover:text-black hover:border-black focus:outline-none ${
+            className={`lg:hidden flex items-center px-3 py-2 ml-5 border rounded text-gray-500 border-gray-500 hover:text-black hover:border-black focus:outline-none ${
               isMenuOpen ? "border-black" : ""
             }`}
           >
