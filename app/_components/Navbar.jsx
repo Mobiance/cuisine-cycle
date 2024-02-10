@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,10 +16,10 @@ const Navbar = () => {
     };
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen]);
 
   const handleNavigation = (path) => {
@@ -29,27 +29,36 @@ const Navbar = () => {
 
   return (
     <nav className="shadow-md p-4 overflow-hidden bg-[#FFF3CF]">
-      <div className="container mx-auto flex justify-between items-center">
-        <img src="/logo.png" alt="Logo" className="w-16 mr-4 cursor-pointer" onClick={() => handleNavigation('/')} />
+      <div className="container mx-auto flex  w-9/12 justify-between ">
+        <div className="object-cover">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-16 mr-4 cursor-pointer object-cover"
+            onClick={() => handleNavigation("/")}
+          />
+        </div>
 
-        <div className="flex-shrink-0 flex w-full justify-between text-gray-500  md:w-auto">
-          
-          <div className="hidden lg:flex">
-            <div className="text-gray-500 hover:text-black px-4 cursor-pointer" onClick={() => handleNavigation('/')}>
-              Home
-            </div>
-            <div className="text-gray-500 hover:text-black px-4 cursor-pointer" onClick={() => handleNavigation('/login')}>
-              Login/SignUp
-            </div>
-            <div className="text-gray-500 hover:text-black px-4 cursor-pointer" onClick={() => handleNavigation('/login')}>
-              My Account
-            </div>
+        <div className=" flex w-full  text-gray-500  md:w-auto  lg:flex object-cover">
+          <div
+            className="text-gray-500 hover:text-black px-4 cursor-pointer"
+            onClick={() => handleNavigation("/login")}
+          >
+            Login/SignUp
+          </div>
+          <div
+            className="text-gray-500 hover:text-black px-4 cursor-pointer"
+            onClick={() => handleNavigation("/login")}
+          >
+            My Account
           </div>
         </div>
         <div>
           <button
             onClick={toggleMenu}
-            className={`lg:hidden flex items-center px-3 py-2 -ml-5 border rounded text-gray-500 border-gray-500 hover:text-black hover:border-black focus:outline-none ${isMenuOpen ? 'border-black' : ''}`}
+            className={`lg:hidden flex items-center px-3 py-2 -ml-5 border rounded text-gray-500 border-gray-500 hover:text-black hover:border-black focus:outline-none ${
+              isMenuOpen ? "border-black" : ""
+            }`}
           >
             <svg
               className="h-3 w-3 fill-current"
@@ -67,21 +76,21 @@ const Navbar = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="absolute lg:relative top-16 lg:top-0 right-0 w-2  shadow-md py-2 mx-1 rounded-md bg-[#FFF3CF]">
+        <div className="absolute top-16 right-0 z-10 shadow-2xl py-2 mx-1 rounded-md bg-[#FFF3CF]">
           <ul className="container mx-auto flex flex-col items-start">
             <li>
-              <div className="block px-2 py-2 text-gray-500 hover:text-black cursor-pointer" onClick={() => handleNavigation('/')}>
-                Home
-              </div>
-            </li>
-            
-            <li>
-              <div className="block px-2 py-2 text-gray-500 hover:text-black cursor-pointer" onClick={() => handleNavigation('/login')}>
+              <div
+                className="block px-2 py-2 text-gray-500 hover:text-black cursor-pointer"
+                onClick={() => handleNavigation("/login")}
+              >
                 Login/SignUp
               </div>
             </li>
             <li>
-              <div className="block px-2 py-2 text-gray-500 hover:text-black cursor-pointer" onClick={() => handleNavigation('/')}>
+              <div
+                className="block px-2 py-2 text-gray-500 hover:text-black cursor-pointer"
+                onClick={() => handleNavigation("/")}
+              >
                 My Account
               </div>
             </li>

@@ -4,6 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import axios from "axios";
+import RecipeCard from "./RecipeCard";
+import { CustomSpinner } from "./Spinner";
 
 const SearchRecipes = () => {
     const [text, setText] = useState("");
@@ -14,6 +16,7 @@ const SearchRecipes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setResponse(null);
         setError(null);
 
         try {
@@ -57,19 +60,13 @@ const SearchRecipes = () => {
                 </Button>
             </form>
             {error && <div>{error}</div>}
-            {response && (
-                <div>
+            {loading && (<CustomSpinner/>)}
+            {response  && (
+                <div className=" w-9/12">
                     <h2>Recipe Results:</h2>
                     <ul>
                         {response.map((recipe, recipeIndex) => (
-                            <div key={recipeIndex}>
-                                <h2>{recipe.name}:</h2> <h3>{recipe.description}</h3>
-                                <ol>
-                                    {recipe.instructions.map((instruction, instructionIndex) =>
-                                    <li key={instructionIndex}>{instruction.display_text}</li>
-                                    )};
-                                </ol>
-                            </div>
+                            <RecipeCard recipe={recipe} recipeIndex={recipeIndex}/>
                         ))}
                     </ul>
                 </div>
