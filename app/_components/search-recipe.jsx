@@ -1,5 +1,7 @@
 // components/SearchRecipes.js
 
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -20,7 +22,7 @@ const SearchRecipes = () => {
         {
           params: { q: text },
           headers: {
-            "x-rapidapi-key": process.env.PROJECT_API_KEY,
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_PROJECT_API_KEY,
             "x-rapidapi-host": "tasty.p.rapidapi.com",
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -41,18 +43,18 @@ const SearchRecipes = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <textarea
+    <div className="flex flex-col w-full items-center justify-center">
+      <form onSubmit={handleSubmit} className="w-96">
+        <Textarea
           value={text}
           onChange={handleChange}
-          placeholder="Enter your text here"
+          placeholder="Enter your Ingredients here"
           rows={5}
           cols={50}
         />
-        <button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? "Loading..." : "Submit"}
-        </button>
+        </Button>
       </form>
       {error && <div>{error}</div>}
       {response && (
