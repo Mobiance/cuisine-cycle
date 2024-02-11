@@ -67,7 +67,7 @@ const SearchRecipes = () => {
                     <p className="text-lg font-bold p-6">Recipe Results:</p>
                     <ul>
                         {response.map((recipe, recipeIndex) => (
-                            <CardRecipe recipe={recipe} recipeIndex={recipeIndex}/>
+                            <CardRecipe recipe={recipe} recipeIndex={recipeIndex} key={1}/>
                         ))}
                     </ul>
                 </div>
