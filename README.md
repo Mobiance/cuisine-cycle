@@ -2,6 +2,8 @@
 
 This project was developed during HackThisFall, a hackathon aimed at Innovating for good Our project focuses on reducing food waste by providing users with recipes based on the ingredients they have available.
 
+## Visit the site at [Cuisine Cycle](https://cuisine-cycle.vercel.app/)
+
 ## Problem Statement
 
 Food waste is a significant issue contributing to environmental degradation and global hunger. Our goal is to tackle this problem by empowering users to make the most of their ingredients and reduce food waste at home.
